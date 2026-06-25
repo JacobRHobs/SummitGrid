@@ -1,0 +1,23 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# ASP.NET
+appsettings.Development.json
+appsettings.json
+
+# Node / React
+node_modules/
+dist/
+.env
+
+# Claude
+CLAUDE.md
+.claude/
+
+# Misc
+.DS_Store
+

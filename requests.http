@@ -1,0 +1,144 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4xIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3ODIyNTU0NjQsImlzcyI6IlN1bW1pdEdyaWQiLCJhdWQiOiJTdW1taXRHcmlkVXNlcnMifQ.di3L1rb7D4DtM3-4aKlf1IoLVyaMJR5FgxkaNWo7Kc4
+
+### Get all climbing areas
+GET http://localhost:5204/api/climbingareas
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidmlld2VyMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlZpZXdlciIsImV4cCI6MTc4MTY1MjMzMywiaXNzIjoiU3VtbWl0R3JpZCIsImF1ZCI6IlN1bW1pdEdyaWRVc2VycyJ9.bO4SbPSvK0o7zHKuXrCrzky-gIJSC854Twg2cp_FITY
+
+
+### Create a new climbing area
+POST http://localhost:5204/api/climbingareas
+Content-Type: application/json
+
+{
+    "name": "New River Gorge",
+    "description": "Sandstone climbing in West Virginia",
+    "accessNotes": "National Park - free entry",
+    "status": 0,
+    "latitude": 37.8329,
+    "longitude": -81.0737
+}
+
+### Get all routes
+GET http://localhost:5204/api/routes
+
+### Create a new route
+POST http://localhost:5204/api/routes
+Content-Type: application/json
+
+{
+    "name": "Military Wall",
+    "description": "Classic sport route on the Military Wall",
+    "grade": "5.11a",
+    "type": 1,
+    "status": 0,
+    "climbingAreaId": 1
+}
+
+### Get all routes
+GET http://localhost:5204/api/incidents
+
+### Create an incident
+POST http://localhost:5204/api/incidents
+Content-Type: application/json
+
+{
+    "title": "Rockfall on Military Wall",
+    "description": "Large rocks came loose on the upper section of Military Wall",
+    "incidentType": 0,
+    "climbingAreaId": 1,
+    "routeId": 1,
+    "reportedBy": "jacob@example.com"
+}
+
+### Update an Incident
+PATCH http://localhost:5204/api/incidents/1
+Content-Type: application/json
+
+{
+    "status": 2
+}
+
+### Get nearby climbing areas
+GET http://localhost:5204/api/climbingareas/nearby?lat=37.8&lon=-81.6&radiusMiles=50
+
+### Get dashboard by radius
+GET http://localhost:5204/api/dashboard?lat=0&lon=0&radiusMiles=50
+
+### Create a user
+POST http://localhost:5204/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "Admin1",
+    "password": "password",
+    "role": 2
+}
+
+### Create a login request
+POST http://localhost:5204/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "operator1",
+    "password": "password",
+}
+
+### Get dashboard
+GET http://localhost:5204/api/dashboard?lat=37.8&lon=-81.6&radiusMiles=50
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoib3BlcmF0b3IxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiT3BlcmF0b3IiLCJleHAiOjE3ODE2NTI5ODksImlzcyI6IlN1bW1pdEdyaWQiLCJhdWQiOiJTdW1taXRHcmlkVXNlcnMifQ.ZpYCLeTHZ6-o-2oR0sLBf-32KGlgpo4ENOhrLssodPY
+
+###
+POST http://localhost:5204/api/routes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "The Nose",
+    "description": "Classic overhanging crack line",
+    "grade": "5.11a",
+    "type": 2,
+    "status": 0,
+    "climbingAreaId": 1
+}
+
+###
+
+POST http://localhost:5204/api/routes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Solar Slab",
+    "description": "Long moderate slab route",
+    "grade": "5.8",
+    "type": 1,
+    "status": 0,
+    "climbingAreaId": 1
+}
+
+###
+
+POST http://localhost:5204/api/routes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Midnight Lightning",
+    "description": "Famous boulder problem",
+    "grade": "V8",
+    "type": 0,
+    "status": 0,
+    "climbingAreaId": 1
+}
+
+###
+POST http://localhost:5204/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "Admin1",
+    "password": "password"
+}
+
+###
+GET http://localhost:5204/api/dryness?lat=37.73&lon=-119.59

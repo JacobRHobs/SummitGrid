@@ -1,0 +1,26 @@
+using System.Dynamic;
+
+namespace SummitGrid.Core.Entities;
+public class Route
+{
+    public int Id {get; set; }
+
+    public string Name {get; set; } = string.Empty;
+
+    public string? Description {get; set; }
+
+    public string? Grade {get; set;}
+
+    public RouteType Type {get; set; }
+
+    public RouteStatus Status {get; set; } = RouteStatus.Open;
+
+    public int ClimbingAreaId { get; set; }
+    public ClimbingArea ClimbingArea { get; set; } = null!;
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+    public ICollection<Incident> Incidents { get; set; } = new List<Incident>();
+}
