@@ -18,7 +18,7 @@ builder.Services.AddDbContext<SummitGridDbContext>(options =>
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IncidentService>();
-builder.Services.AddScoped<IDrynessService, DrynessService>();
+builder.Services.AddHttpClient<IDrynessService, DrynessService>();
 
 builder.Services.AddCors(options =>
 {
