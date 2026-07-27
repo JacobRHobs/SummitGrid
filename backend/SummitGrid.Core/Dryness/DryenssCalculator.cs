@@ -35,4 +35,18 @@ public class DrynessCalculator
 
         return Wetness;
     }
+
+    public static DrynessState GetState(double wetness, RockTypes type)
+    {
+        if((type == RockTypes.Sandstone || type == RockTypes.Conglomerate) && wetness > 0)
+            return DrynessState.Locked;
+        else if(wetness > 3)
+            return DrynessState.Wet;
+        else if(wetness >= .1 && wetness <= 3)
+            return DrynessState.Drying;
+        
+        return DrynessState.Dry;
+    }
+
+    
 }

@@ -12,7 +12,7 @@ public class DrynessService: IDrynessService
         _httpClient = httpClient;
     }
     
-    public async Task<double> GetDrynessAsync(double lat, double lon)
+    public async Task<DrynessState> GetDrynessAsync(double lat, double lon)
     {
         string apiCall = $"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=et0_fao_evapotranspiration,rain,showers&past_days=3";
         var response = await _httpClient.GetStringAsync(apiCall);
@@ -32,7 +32,9 @@ public class DrynessService: IDrynessService
 
         var rockType = await GetRockTypesAsync(lat, lon);
 
-        return DrynessCalculator.Calculate(weatherReadings, rockType);
+        double dryness = DrynessCalculator.Calculate(weatherReadings, rockType);
+
+        return DrynessCalculator.GetState(dryness, rockType);
     }
 
     // Macrostrat returns a stratigraphic column: multiple rock layers, each potentially containing multiple lithologies.
