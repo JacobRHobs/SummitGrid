@@ -2,5 +2,5 @@ namespace SummitGrid.Core.Dryness;
 
 public interface IDrynessService
 {
-    Task<DrynessState> GetDrynessAsync(double lat, double lon);
+    Task<DrynessStateResponse> GetDrynessAsync(double lat, double lon, RockTypes? rockType);
 }

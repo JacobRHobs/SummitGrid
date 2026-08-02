@@ -1,4 +1,5 @@
 using NetTopologySuite.Geometries;
+using SummitGrid.Core.Dryness;
 
 namespace SummitGrid.Core.Entities;
 public class ClimbingArea
@@ -12,6 +13,8 @@ public class ClimbingArea
     public string? AccessNotes { get; set; }
     
     public AreaStatus Status { get; set; } = AreaStatus.Open;
+    
+    public RockTypes? RockType {get; set; } 
 
     public Point Location { get; set; } = null!;
 

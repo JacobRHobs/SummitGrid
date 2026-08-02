@@ -19,6 +19,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IncidentService>();
 builder.Services.AddHttpClient<IDrynessService, DrynessService>();
+builder.Services.AddMemoryCache();
+
 
 builder.Services.AddCors(options =>
 {
